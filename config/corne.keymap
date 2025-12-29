@@ -5,52 +5,117 @@
  */
 
 #include <behaviors.dtsi>
-#include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/bt.h>
+#include <dt-bindings/zmk/ext_power.h>
+#include <dt-bindings/zmk/keys.h>
+#include <dt-bindings/zmk/rgb.h>
 
 / {
-        keymap {
-                compatible = "zmk,keymap";
+    behaviors {
+        betterholdandtap: betterholdandtap {
+            compatible = "zmk,behavior-hold-tap";
+            label = "BETTERHOLDANDTAP";
+            bindings = <&kp>, <&kp>;
 
-                default_layer {
-// -----------------------------------------------------------------------------------------
-// |  TAB |  Q  |  W  |  E  |  R  |  T  |   |  Y  |  U   |  I  |  O  |  P  | BSPC |
-// | CTRL |  A  |  S  |  D  |  F  |  G  |   |  H  |  J   |  K  |  L  |  ;  |  '   |
-// | SHFT |  Z  |  X  |  C  |  V  |  B  |   |  N  |  M   |  ,  |  .  |  /  | ESC  |
-//                    | GUI | LWR | SPC |   | ENT | RSE  | ALT |
-                        bindings = <
-   &kp TAB   &kp Q &kp W &kp E &kp R &kp T   &kp Y &kp U  &kp I     &kp O   &kp P    &kp BSPC
-   &kp LCTRL &kp A &kp S &kp D &kp F &kp G   &kp H &kp J  &kp K     &kp L   &kp SEMI &kp SQT
-   &kp LSHFT &kp Z &kp X &kp C &kp V &kp B   &kp N &kp M  &kp COMMA &kp DOT &kp FSLH &kp ESC
-                  &kp LGUI &mo 1 &kp SPACE   &kp RET &mo 2 &kp RALT
-                        >;
-                };
-                lower_layer {
-// -----------------------------------------------------------------------------------------
-// |  TAB |  1  |  2  |  3  |  4  |  5  |   |  6  |  7  |  8  |  9  |  0  | BSPC |
-// | BTCLR| BT1 | BT2 | BT3 | BT4 | BT5 |   | LFT | DWN |  UP | RGT |     |      |
-// | SHFT |     |     |     |     |     |   |     |     |     |     |     |      |
-//                    | GUI |     | SPC |   | ENT |     | ALT |
-                        bindings = <
-   &kp TAB    &kp N1       &kp N2       &kp N3       &kp N4       &kp N5         &kp N6   &kp N7   &kp N8 &kp N9    &kp N0 &kp BSPC
-   &bt BT_CLR &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4   &kp LEFT &kp DOWN &kp UP &kp RIGHT &trans &trans
-   &kp LSHFT  &trans       &trans       &trans       &trans       &trans         &trans   &trans   &trans &trans    &trans &trans
-                                    &kp LGUI     &trans       &kp SPACE      &kp RET  &trans   &kp RALT
-                        >;
-                };
-
-                raise_layer {
-// -----------------------------------------------------------------------------------------
-// |  TAB |  !  |  @  |  #  |  $  |  %  |   |  ^  |  &  |  *  |  (  |  )  | BSPC |
-// | CTRL |     |     |     |     |     |   |  -  |  =  |  [  |  ]  |  \  |  `   |
-// | SHFT |     |     |     |     |     |   |  _  |  +  |  {  |  }  | "|" |  ~   |
-//                    | GUI |     | SPC |   | ENT |     | ALT |
-                        bindings = <
-   &kp  TAB  &kp EXCL &kp AT &kp HASH &kp DLLR &kp PRCNT   &kp CARET &kp AMPS  &kp ASTRK &kp LPAR &kp RPAR &kp BSPC
-   &kp LCTRL &trans   &trans &trans   &trans   &trans      &kp MINUS &kp EQUAL &kp LBKT  &kp RBKT &kp BSLH &kp GRAVE
-   &kp LSHFT &trans   &trans &trans   &trans   &trans      &kp UNDER &kp PLUS  &kp LBRC  &kp RBRC &kp PIPE &kp TILDE
-                             &kp LGUI &trans   &kp SPACE   &kp RET   &trans    &kp RALT
-                        >;
-                };
+            #binding-cells = <2>;
+            tapping-term-ms = <200>;
+            flavor = "tap-preferred";
+            quick-tap-ms = <(-1)>;
+            require-prior-idle-ms = <100>;
         };
+
+        tap_dance: tap_dance {
+            compatible = "zmk,behavior-tap-dance";
+            label = "TAP_DANCE";
+            #binding-cells = <0>;
+            bindings = <&to 1>, <&to 0>;
+
+            tapping-term-ms = <200>;
+        };
+
+        holdLayerTapletter: holdLayerTapletter {
+            compatible = "zmk,behavior-hold-tap";
+            label = "HOLDLAYERTAPLETTER";
+            bindings = <&mo>, <&kp>;
+
+            #binding-cells = <2>;
+            tapping-term-ms = <200>;
+            require-prior-idle-ms = <100>;
+            flavor = "tap-preferred";
+        };
+    };
+
+    keymap {
+        compatible = "zmk,keymap";
+
+        default_layer {
+            // -----------------------------------------------------------------------------------------
+            // |  TAB |  Q  |  W  |  E  |  R  |  T  |   |  Y  |  U   |  I  |  O  |  P  | BKSP |
+            // | CTRL |  A  |  S  |  D  |  F  |  G  |   |  H  |  J   |  K  |  L  |  ;  |  '   |
+            // | SHFT |  Z  |  X  |  C  |  V  |  B  |   |  N  |  M   |  ,  |  .  |  /  | ESC  |
+            //                    | GUI | LWR | SPC |   | ENT | RSE  | ALT |
+
+            display-name = "Base";
+            bindings = <
+&kp TAB    &kp Q  &kp W                     &kp E                          &kp R                    &kp T        &kp Y          &kp U  &kp I                          &kp O                      &kp P     &to 4
+&kp ESC    &kp A  &betterholdandtap LALT S  &betterholdandtap RIGHT_ALT D  &holdLayerTapletter 2 F  &kp G        &kp H          &kp J  &betterholdandtap RIGHT_ALT K  &betterholdandtap LCTRL L  &kp SEMI  &kp APOSTROPHE
+&kp LSHFT  &kp Z  &kp X                     &kp C                          &kp V                    &kp B        &kp N          &kp M  &kp COMMA                      &kp DOT                    &kp FSLH  &mo 3
+                                            &kp LCTRL                      &mo 1                    &kp SPACE    &kp BACKSPACE  &mo 2  &kp ENTER
+            >;
+        };
+
+        lower_layer {
+            // -----------------------------------------------------------------------------------------
+            // |  TAB |  1  |  2  |  3  |  4  |  5  |   |  6  |  7  |  8  |  9  |  0  | BKSP |
+            // | BTCLR| BT1 | BT2 | BT3 | BT4 | BT5 |   | LFT | DWN |  UP | RGT |     |      |
+            // | SHFT |     |     |     |     |     |   |     |     |     |     |     |      |
+            //                    | GUI |     | SPC |   | ENT |     | ALT |
+
+            display-name = "Lower";
+            bindings = <
+&kp TAB    &kp LA(S)         &trans            &trans            &trans            &trans              &kp LEFT_ARROW    &kp UP_ARROW  &kp DOWN_ARROW  &kp RIGHT_ARROW  &kp NUMBER_0  &trans
+&kp ESC    &kp NUMBER_1      &kp NUMBER_2      &kp NUMBER_3      &kp NUMBER_4      &kp NUMBER_5        &kp NUMBER_6      &kp NUMBER_7  &kp NUMBER_8    &kp NUMBER_9     &trans        &trans
+&kp LSHFT  &kp LA(NUMBER_1)  &kp LA(NUMBER_2)  &kp LA(NUMBER_3)  &kp LA(NUMBER_4)  &kp LA(NUMBER_5)    &kp LA(NUMBER_6)  &trans        &trans          &trans           &trans        &trans
+                                               &kp LCTRL         &trans            &kp SPACE           &kp BACKSPACE     &mo 2         &kp ENTER
+            >;
+        };
+
+        raise_layer {
+            // -----------------------------------------------------------------------------------------
+            // |  TAB |  !  |  @  |  #  |  $  |  %  |   |  ^  |  &  |  *  |  (  |  )  | BKSP |
+            // | CTRL |     |     |     |     |     |   |  -  |  =  |  [  |  ]  |  \  |  `   |
+            // | SHFT |     |     |     |     |     |   |  _  |  +  |  {  |  }  | "|" |  ~   |
+            //                    | GUI |     | SPC |   | ENT |     | ALT |
+
+            display-name = "Raise";
+            bindings = <
+&kp TAB     &trans           &kp KP_SUBTRACT  &kp GRAVE  &kp CARET   &kp EQUAL      &kp PLUS        &kp AMPS        &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &kp KP_MULTIPLY    &trans
+&kp ESCAPE  &kp EXCLAMATION  &kp AT_SIGN      &kp HASH   &kp DOLLAR  &kp PERCENT    &kp UNDERSCORE  &kp LEFT_BRACE  &kp RIGHT_BRACE       &kp LEFT_BRACKET       &kp RIGHT_BRACKET  &trans
+&kp LSHFT   &trans           &trans           &trans     &trans      &trans         &trans          &trans          &trans                &kp BACKSLASH          &kp PIPE           &trans
+                                              &kp LCTRL  &trans      &kp SPACE      &kp BACKSPACE   &trans          &kp ENTER
+            >;
+        };
+
+        layer_3 {
+            display-name = "bluetooth";
+            bindings = <
+&ext_power EP_TOG  &ext_power EP_ON  &ext_power EP_OFF  &trans        &trans        &trans          &ext_power EP_TOG  &ext_power EP_ON  &ext_power EP_OFF  &trans                             &trans                          &trans
+&bt BT_CLR         &bt BT_SEL 0      &bt BT_SEL 1       &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4    &rgb_ug RGB_ON     &rgb_ug RGB_EFF   &rgb_ug RGB_EFR    &rgb_ug RGB_COLOR_HSB(253,100,48)  &rgb_ug RGB_COLOR_HSB(0,91,50)  &rgb_ug RGB_COLOR_HSB(183,71,53)
+&bt BT_CLR_ALL     &rgb_ug RGB_TOG   &trans             &trans        &trans        &kp A           &trans             &trans            &trans             &trans                             &trans                          &trans
+                                                        &trans        &trans        &trans          &trans             &trans            &trans
+            >;
+        };
+
+        layer_4 {
+            display-name = "colemak";
+            bindings = <
+&kp TAB         &kp Q  &kp W  &kp F      &kp P  &kp B        &kp J     &kp L  &kp U      &kp Y    &kp SEMI  &to 0
+&kp ESCAPE      &kp A  &kp R  &kp S      &kp T  &kp G        &kp M     &kp N  &kp E      &kp I    &kp O     &kp APOS
+&kp LEFT_SHIFT  &kp Z  &kp X  &kp C      &kp D  &kp V        &kp K     &kp H  &kp COMMA  &kp DOT  &kp FSLH  &ext_power EP_TOG
+                              &kp LCTRL  &mo 1  &kp SPACE    &kp BSPC  &mo 2  &kp ENTER
+            >;
+        };
+    };
+
+    conditional_layers { compatible = "zmk,conditional-layers"; };
 };
