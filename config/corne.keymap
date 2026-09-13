@@ -151,6 +151,13 @@
             bindings = <&kp P &kp Y &kp T &kp E &kp S &kp T &kp SPACE>;
             label = "PYTEST";
         };
+
+        git_status: git_status {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp G &kp I &kp T &kp SPACE &kp S &kp T &kp A &kp T &kp U &kp S>;
+            label = "GIT_STATUS";
+        };
     };
 
     keymap {
@@ -228,7 +235,7 @@
             bindings = <
 &git_add                    &git_add_all    &git_commit       &git_push  &glab_mr_create  &git_pull_rebase    &trans  &trans  &trans  &trans  &trans   &trans
 &git_push_force_with_lease  &kp F1          &kp F2            &kp F3     &kp F4           &kp F5              &kp F6  &kp F7  &kp F8  &kp F9  &kp F10  &kp F11
-&trans                      &venv_activate  &venv_deactivate  &cm_name   &claude          &trans              &trans  &trans  &trans  &trans  &trans   &trans
+&trans                      &venv_activate  &venv_deactivate  &cm_name   &claude          &git_status         &trans  &trans  &trans  &trans  &trans   &trans
                                                               &trans     &pytest          &nvim               &trans  &trans  &trans
             >;
         };
