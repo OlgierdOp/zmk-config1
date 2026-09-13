@@ -52,6 +52,8 @@
             #binding-cells = <0>;
             bindings = <&kp G &kp I &kp T &kp SPACE &kp P &kp U &kp S &kp H>;
             label = "GIT_PUSH";
+            wait-ms = <1>;
+            tap-ms = <1>;
         };
 
         git_commit: git_commit {
@@ -59,6 +61,8 @@
             #binding-cells = <0>;
             bindings = <&kp G &kp I &kp T &kp SPACE &kp C &kp O &kp M &kp M &kp I &kp T &kp SPACE &kp MINUS &kp M &kp SPACE &kp DQT &kp DQT>;
             label = "GIT_COMMIT";
+            wait-ms = <1>;
+            tap-ms = <1>;
         };
 
         git_pull_rebase: git_pull_rebase {
@@ -66,6 +70,8 @@
             #binding-cells = <0>;
             bindings = <&kp G &kp I &kp T &kp SPACE &kp P &kp U &kp L &kp L &kp SPACE &kp MINUS &kp MINUS &kp R &kp E &kp B &kp A &kp S &kp E &kp SPACE &kp O &kp R &kp I &kp G &kp I &kp N &kp SPACE &kp D &kp E &kp V>;
             label = "GIT_PULL_REBASE";
+            wait-ms = <1>;
+            tap-ms = <1>;
         };
 
         git_fetch: git_fetch {
@@ -73,6 +79,8 @@
             #binding-cells = <0>;
             bindings = <&kp G &kp I &kp T &kp SPACE &kp F &kp E &kp T &kp C &kp H>;
             label = "GIT_FETCH";
+            wait-ms = <1>;
+            tap-ms = <1>;
         };
 
         git_rebase_continue: git_rebase_continue {
@@ -80,6 +88,8 @@
             #binding-cells = <0>;
             bindings = <&kp G &kp I &kp T &kp SPACE &kp R &kp E &kp B &kp A &kp S &kp E &kp SPACE &kp MINUS &kp MINUS &kp C &kp O &kp N &kp T &kp I &kp N &kp U &kp E>;
             label = "GIT_REBASE_CONTINUE";
+            wait-ms = <1>;
+            tap-ms = <1>;
         };
 
         git_add_all: git_add_all {
@@ -87,6 +97,8 @@
             #binding-cells = <0>;
             bindings = <&kp G &kp I &kp T &kp SPACE &kp A &kp D &kp D &kp SPACE &kp DOT>;
             label = "GIT_ADD_ALL";
+            wait-ms = <1>;
+            tap-ms = <1>;
         };
 
         git_add: git_add {
@@ -94,6 +106,8 @@
             #binding-cells = <0>;
             bindings = <&kp G &kp I &kp T &kp SPACE &kp A &kp D &kp D>;
             label = "GIT_ADD";
+            wait-ms = <1>;
+            tap-ms = <1>;
         };
 
         claude: claude {
@@ -101,13 +115,17 @@
             #binding-cells = <0>;
             bindings = <&kp C &kp L &kp A &kp U &kp D &kp E &kp RET>;
             label = "CLAUDE";
+            wait-ms = <1>;
+            tap-ms = <1>;
         };
 
         nvim: nvim {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&none &kp N &kp V &kp I &kp M &kp N &kp V &kp I &kp M &kp RET>;
+            bindings = <&kp N &kp V &kp I &kp M &kp RET>;
             label = "NVIM";
+            wait-ms = <1>;
+            tap-ms = <1>;
         };
 
         git_push_force_with_lease: git_push_force_with_lease {
@@ -115,6 +133,8 @@
             #binding-cells = <0>;
             bindings = <&none &kp G &kp I &kp T &kp SPACE &kp P &kp U &kp S &kp H &kp SPACE &kp MINUS &kp MINUS &kp F &kp O &kp R &kp C &kp E &kp MINUS &kp W &kp I &kp T &kp H &kp MINUS &kp L &kp E &kp A &kp S &kp E>;
             label = "GIT_PUSH_FORCE_WITH_LEASE";
+            wait-ms = <1>;
+            tap-ms = <1>;
         };
 
         glab_mr_create: glab_mr_create {
@@ -122,6 +142,8 @@
             #binding-cells = <0>;
             bindings = <&kp G &kp L &kp A &kp B &kp SPACE &kp M &kp R &kp SPACE &kp C &kp R &kp E &kp A &kp T &kp E>;
             label = "GLAB_MR_CREATE";
+            wait-ms = <1>;
+            tap-ms = <1>;
         };
 
         cm_name: cm_name {
@@ -129,6 +151,8 @@
             #binding-cells = <0>;
             bindings = <&kp C &kp M &kp SPACE &kp MINUS &kp MINUS &kp N &kp A &kp M &kp E &kp SPACE>;
             label = "CM_NAME";
+            wait-ms = <1>;
+            tap-ms = <1>;
         };
 
         venv_activate: venv_activate {
@@ -136,6 +160,8 @@
             #binding-cells = <0>;
             bindings = <&kp S &kp O &kp U &kp R &kp C &kp E &kp SPACE &kp DOT &kp FSLH &kp V &kp E &kp N &kp V &kp FSLH &kp B &kp I &kp N &kp FSLH &kp A &kp C &kp T &kp I &kp V &kp A &kp T &kp E &kp RET>;
             label = "VENV_ACTIVATE";
+            wait-ms = <1>;
+            tap-ms = <1>;
         };
 
         venv_deactivate: venv_deactivate {
@@ -143,6 +169,8 @@
             #binding-cells = <0>;
             bindings = <&kp D &kp E &kp A &kp C &kp T &kp I &kp V &kp A &kp T &kp E>;
             label = "VENV_DEACTIVATE";
+            wait-ms = <1>;
+            tap-ms = <1>;
         };
 
         pytest: pytest {
@@ -150,13 +178,17 @@
             #binding-cells = <0>;
             bindings = <&kp P &kp Y &kp T &kp E &kp S &kp T &kp SPACE>;
             label = "PYTEST";
+            wait-ms = <1>;
+            tap-ms = <1>;
         };
 
         git_status: git_status {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp G &kp I &kp T &kp SPACE &kp S &kp T &kp A &kp T &kp U &kp S>;
+            bindings = <&kp G &kp I &kp T &kp SPACE &kp S &kp T &kp A &kp T &kp U &kp S &kp RET>;
             label = "GIT_STATUS";
+            wait-ms = <1>;
+            tap-ms = <1>;
         };
     };
 
