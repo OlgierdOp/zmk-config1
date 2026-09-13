@@ -46,6 +46,113 @@
         };
     };
 
+    macros {
+        git_push: git_push {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp G &kp I &kp T &kp SPACE &kp P &kp U &kp S &kp H>;
+            label = "GIT_PUSH";
+        };
+
+        git_commit: git_commit {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp G &kp I &kp T &kp SPACE &kp C &kp O &kp M &kp M &kp I &kp T &kp SPACE &kp MINUS &kp M &kp SPACE &kp DQT &kp DQT>;
+            label = "GIT_COMMIT";
+        };
+
+        git_pull_rebase: git_pull_rebase {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp G &kp I &kp T &kp SPACE &kp P &kp U &kp L &kp L &kp SPACE &kp MINUS &kp MINUS &kp R &kp E &kp B &kp A &kp S &kp E &kp SPACE &kp O &kp R &kp I &kp G &kp I &kp N &kp SPACE &kp D &kp E &kp V>;
+            label = "GIT_PULL_REBASE";
+        };
+
+        git_fetch: git_fetch {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp G &kp I &kp T &kp SPACE &kp F &kp E &kp T &kp C &kp H>;
+            label = "GIT_FETCH";
+        };
+
+        git_rebase_continue: git_rebase_continue {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp G &kp I &kp T &kp SPACE &kp R &kp E &kp B &kp A &kp S &kp E &kp SPACE &kp MINUS &kp MINUS &kp C &kp O &kp N &kp T &kp I &kp N &kp U &kp E>;
+            label = "GIT_REBASE_CONTINUE";
+        };
+
+        git_add_all: git_add_all {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp G &kp I &kp T &kp SPACE &kp A &kp D &kp D &kp SPACE &kp DOT>;
+            label = "GIT_ADD_ALL";
+        };
+
+        git_add: git_add {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp G &kp I &kp T &kp SPACE &kp A &kp D &kp D>;
+            label = "GIT_ADD";
+        };
+
+        claude: claude {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp C &kp L &kp A &kp U &kp D &kp E &kp RET>;
+            label = "CLAUDE";
+        };
+
+        nvim: nvim {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&none &kp N &kp V &kp I &kp M &kp N &kp V &kp I &kp M &kp RET>;
+            label = "NVIM";
+        };
+
+        git_push_force_with_lease: git_push_force_with_lease {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&none &kp G &kp I &kp T &kp SPACE &kp P &kp U &kp S &kp H &kp SPACE &kp MINUS &kp MINUS &kp F &kp O &kp R &kp C &kp E &kp MINUS &kp W &kp I &kp T &kp H &kp MINUS &kp L &kp E &kp A &kp S &kp E>;
+            label = "GIT_PUSH_FORCE_WITH_LEASE";
+        };
+
+        glab_mr_create: glab_mr_create {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp G &kp L &kp A &kp B &kp SPACE &kp M &kp R &kp SPACE &kp C &kp R &kp E &kp A &kp T &kp E>;
+            label = "GLAB_MR_CREATE";
+        };
+
+        cm_name: cm_name {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp C &kp M &kp SPACE &kp MINUS &kp MINUS &kp N &kp A &kp M &kp E &kp SPACE>;
+            label = "CM_NAME";
+        };
+
+        venv_activate: venv_activate {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp S &kp O &kp U &kp R &kp C &kp E &kp SPACE &kp DOT &kp FSLH &kp V &kp E &kp N &kp V &kp FSLH &kp B &kp I &kp N &kp FSLH &kp A &kp C &kp T &kp I &kp V &kp A &kp T &kp E &kp RET>;
+            label = "VENV_ACTIVATE";
+        };
+
+        venv_deactivate: venv_deactivate {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp D &kp E &kp A &kp C &kp T &kp I &kp V &kp A &kp T &kp E>;
+            label = "VENV_DEACTIVATE";
+        };
+
+        pytest: pytest {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp P &kp Y &kp T &kp E &kp S &kp T &kp SPACE>;
+            label = "PYTEST";
+        };
+    };
+
     keymap {
         compatible = "zmk,keymap";
 
@@ -119,10 +226,10 @@
 
         layer_5 {
             bindings = <
-&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans   &trans
-&trans  &kp F1  &kp F2  &kp F3  &kp F4  &kp F5    &kp F6  &kp F7  &kp F8  &kp F9  &kp F10  &kp F11
-&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans   &trans
-                        &trans  &trans  &trans    &trans  &trans  &trans
+&git_add                    &git_add_all    &git_commit       &git_push  &glab_mr_create  &git_pull_rebase    &trans  &trans  &trans  &trans  &trans   &trans
+&git_push_force_with_lease  &kp F1          &kp F2            &kp F3     &kp F4           &kp F5              &kp F6  &kp F7  &kp F8  &kp F9  &kp F10  &kp F11
+&trans                      &venv_activate  &venv_deactivate  &cm_name   &claude          &trans              &trans  &trans  &trans  &trans  &trans   &trans
+                                                              &trans     &pytest          &nvim               &trans  &trans  &trans
             >;
         };
     };
